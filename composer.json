@@ -1,0 +1,22 @@
+{
+  "name": "robin/api",
+  "description": "PHP Wrapper for the robin api",
+  "require": {
+    "illuminate/support": "v5",
+    "guzzlehttp/guzzle": "~6.0",
+    "nesbot/carbon": "1.19.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.7.3",
+    "vlucas/phpdotenv": "v2.0.1",
+    "symfony/var-dumper": "v2.7.1"
+  },
+  "license": "GPL v3",
+  "authors": [
+    {
+      "name": "Bram Wubs",
+      "email": "bwubs@me.com"
+    }
+  ],
+  "minimum-stability": "stable"
+}
