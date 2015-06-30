@@ -1,15 +1,9 @@
 <?php
 
-
-use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Psr7\Response;
-use Illuminate\Support\Collection;
-use Robin\Connect\Contracts\Retriever;
-use Robin\Connect\Contracts\Sender;
-use Robin\Connect\Robin\Api\Client;
-use Robin\Connect\Robin\Collections\Orders;
-use Robin\Connect\Robin\Models\Customer;
-use Robin\Connect\Robin\Models\Order;
+use Robin\Api\Collections\Customers;
+use Robin\Api\Client;
+use Robin\Api\Collections\Orders;
 
 class RobinApiTest extends TestCase
 {
@@ -23,7 +17,7 @@ class RobinApiTest extends TestCase
 
         $api = new Client($key, $secret, $url);
 
-        $customers = new \Robin\Connect\Robin\Collections\Customers(
+        $customers = new Customers(
             [
                 [
                     "email_address" => "bwubs@me.com",
@@ -61,7 +55,7 @@ class RobinApiTest extends TestCase
     {
         $api = $this->getRealRobinClient();
 
-        $order = $this->getModel("robin_order", true);
+        $order = $this->getModel("order", true);
 
         $orders = new Orders(
             [
@@ -84,34 +78,5 @@ class RobinApiTest extends TestCase
 
         return new Client($key, $secret, $url);
 
-    }
-}
-
-class TestApi implements Sender
-{
-
-    /**
-     * @var GuzzleHttp\Client
-     */
-    private $client;
-
-    public function orders(Orders $orders)
-    {
-        // TODO: Implement orders() method.
-    }
-
-    /**
-     * @param \Robin\Connect\Robin\Collections\Customers $customers
-     * @return Response|void
-     */
-    public function customers(\Robin\Connect\Robin\Collections\Customers $customers)
-    {
-
-        $this->client->post("customers", $customers->toArray());
-    }
-
-    public function setClient(ClientInterface $client)
-    {
-        $this->client = $client;
     }
 }

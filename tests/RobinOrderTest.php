@@ -1,16 +1,18 @@
 <?php
 
 
-use Robin\Connect\Contracts\Logger;
-use Robin\Connect\Contracts\Retriever;
-use Robin\Connect\Robin\Collections\Details;
-use Robin\Connect\Robin\Collections\Invoices;
-use Robin\Connect\Robin\Collections\Products;
-use Robin\Connect\Robin\Models\Order;
-use Robin\Connect\Robin\Models\Views\Details\Invoice;
-use Robin\Connect\Robin\Models\Views\Details\Product;
-use Robin\Connect\Robin\Models\Views\Details\DetailViewItem;
-use Robin\Connect\SEOShop\Api\Resource;
+use Carbon\Carbon;
+use Robin\Api\Collections\Products;
+use Robin\Api\Collections\Shipments;
+use Robin\Api\Models\Order;
+use Robin\Api\Collections\DetailsView;
+use Robin\Api\Collections\Invoices;
+use Robin\Api\Models\Views\Details\Invoice;
+use Robin\Api\Models\Views\Details\OrderDetails;
+use Robin\Api\Models\Views\Details\Product;
+use Robin\Api\Models\Views\Details\DetailViewItem;
+use Robin\Api\Models\Views\Details\Shipment;
+use Robin\Api\Models\Views\ListView;
 
 class RobinOrderTest extends TestCase
 {
@@ -20,7 +22,7 @@ class RobinOrderTest extends TestCase
     {
         $robinOrder = $this->getRobinOrder();
 
-        $this->assertEquals("2015/06/08", $robinOrder->orderByDate);
+        $this->assertEquals("2015/06/25", $robinOrder->orderByDate);
         $this->assertEquals(
             "https://seoshop.webshopapp.com/backoffice/sales-orders/edit?id=7846544",
             $robinOrder->url
@@ -31,7 +33,7 @@ class RobinOrderTest extends TestCase
     {
         $robinOrder = $this->getRobinOrder();
 
-        $this->assertInstanceOf('Robin\\Connect\\Robin\\Models\\Views\\ListView', $robinOrder->listView);
+        $this->assertInstanceOf(ListView::class, $robinOrder->listView);
         $this->assertArrayHasKey("order_number", $robinOrder->listView->toArray());
     }
 
@@ -39,13 +41,13 @@ class RobinOrderTest extends TestCase
     {
         $robinOrder = $this->getRobinOrder();
 
-        $this->assertInstanceOf(Details::class, $robinOrder->detailsView);
+        $this->assertInstanceOf(DetailsView::class, $robinOrder->detailsView);
         /** @var DetailViewItem $detail */
         $detail = $robinOrder->detailsView->first();
         $this->assertInstanceOf(DetailViewItem::class, $detail);
         $this->assertArrayHasKey("display_as", $detail->toArray());
         $this->assertEquals("details", $detail->displayAs);
-        $this->assertInstanceOf(\Robin\Connect\Robin\Models\Views\Details\OrderDetails::class, $detail->data);
+        $this->assertInstanceOf(OrderDetails::class, $detail->data);
 
     }
 
@@ -53,6 +55,10 @@ class RobinOrderTest extends TestCase
     {
         $robinOrder = $this->getRobinOrder();
 
+        $products = Products::make();
+        $products->push(Product::make("iStuff", 1, "€12,50"));
+
+        $robinOrder->detailsView->addColumns($products, "products");
         /** @var DetailViewItem $productsView */
         $productsView = $robinOrder->detailsView->get(1);
 
@@ -67,7 +73,13 @@ class RobinOrderTest extends TestCase
     {
         $robinOrder = $this->getRobinOrder();
 
-        $shipmentsView = $robinOrder->detailsView->get(2);
+        $shipments = Shipments::make();
+
+        $shipments->push(Shipment::make("#", "Shipped"));
+
+        $robinOrder->detailsView->addRows($shipments, "Shipments");
+
+        $shipmentsView = $robinOrder->detailsView->get(1);
 
         $this->assertInstanceOf(DetailViewItem::class, $shipmentsView);
         $this->assertArrayHasKey("display_as", $shipmentsView->toArray());
@@ -78,7 +90,13 @@ class RobinOrderTest extends TestCase
     {
         $robinOrder = $this->getRobinOrder();
 
-        $shipmentsView = $robinOrder->detailsView->get(3);
+        $invoices = Invoices::make();
+
+        $invoices->push(Invoice::make("#", "Paid", "12,50"));
+
+        $robinOrder->detailsView->addRows($invoices, "Invoices");
+
+        $shipmentsView = $robinOrder->detailsView->get(1);
 
         $this->assertInstanceOf(DetailViewItem::class, $shipmentsView);
         $this->assertArrayHasKey("display_as", $shipmentsView->toArray());
@@ -92,51 +110,24 @@ class RobinOrderTest extends TestCase
      */
     private function getRobinOrder()
     {
-        $seoOrder = $this->getModel("order");
-        $client = new SeoDummyClient();
-        $seoOrder = (new Robin\Connect\SEOShop\Models\Order($client))->makeFromJson(
-            $seoOrder
-        );
-        return Order::make($seoOrder);
-    }
 
-}
 
-class SeoDummyClient implements Retriever
-{
+        $createdAt = Carbon::now(new DateTimeZone("Europe/Amsterdam"))->subDays(5);
+        $listView = ListView::make("ORD123", $createdAt, "Shipped");
 
-    public function customers()
-    {
-        // TODO: Implement customers() method.
-    }
+        $detailsView = new DetailsView();
+        $orderDetails = OrderDetails::make($createdAt, "Shipped", "Paid", "Shipped");
+        $detailsView->addDetails($orderDetails);
 
-    public function orders()
-    {
-        // TODO: Implement orders() method.
-    }
-
-    public function retrieve($resource, $name = null)
-    {
-        if (is_object($resource) && is_string($name)) {
-            $name = ucfirst($name);
-            return (new Resource($resource, $this, $name))->get();
-        }
-        return json_decode(
-            json_encode(
-                [
-                    "email" => 'blaat@blaat.com'
-                ]
-            )
+        return Order::make(
+            "ORD1234",
+            "bwubs@me.com",
+            $createdAt,
+            12.50,
+            "https://seoshop.webshopapp.com/backoffice/sales-orders/edit?id=7846544",
+            $listView,
+            $detailsView
         );
     }
 
-    public function getNumRetrieved()
-    {
-        return 0;
-    }
-
-    public function count($endpoint)
-    {
-        // TODO: Implement count() method.
-    }
 }
