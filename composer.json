@@ -2,7 +2,7 @@
   "name": "robin/api",
   "description": "PHP Wrapper for the robin api",
   "require": {
-    "illuminate/support": "v5",
+    "illuminate/support": "v5.1.2",
     "guzzlehttp/guzzle": "~6.0",
     "nesbot/carbon": "1.19.0"
   },

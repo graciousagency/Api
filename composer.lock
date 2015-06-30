@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2891d14fec9fdcb0eb5f930bfcf83e16",
+    "hash": "d85edfb1a2bd06d6c4f93b3481f6eb8a",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -302,25 +302,25 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.0.33",
+            "version": "v5.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "b8b11d78724a6f8a62be3b1dfa20fa372f861398"
+                "reference": "6e18848e5d332d802aa8bfa60b95e022023973f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/b8b11d78724a6f8a62be3b1dfa20fa372f861398",
-                "reference": "b8b11d78724a6f8a62be3b1dfa20fa372f861398",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/6e18848e5d332d802aa8bfa60b95e022023973f1",
+                "reference": "6e18848e5d332d802aa8bfa60b95e022023973f1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": ">=5.5.9"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.0-dev"
+                    "dev-master": "5.1-dev"
                 }
             },
             "autoload": {
@@ -340,36 +340,37 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "http://laravel.com",
-            "time": "2015-05-15 07:22:28"
+            "time": "2015-06-08 18:13:21"
         },
         {
             "name": "illuminate/support",
-            "version": "v5.0.0",
+            "version": "v5.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "306ceb305f5b480608d94355ac3a0a730b21a905"
+                "reference": "cf0604a576bb5bf3b36ed5c3a4b52c5464fd49b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/306ceb305f5b480608d94355ac3a0a730b21a905",
-                "reference": "306ceb305f5b480608d94355ac3a0a730b21a905",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/cf0604a576bb5bf3b36ed5c3a4b52c5464fd49b4",
+                "reference": "cf0604a576bb5bf3b36ed5c3a4b52c5464fd49b4",
                 "shasum": ""
             },
             "require": {
                 "danielstjules/stringy": "~1.8",
                 "doctrine/inflector": "~1.0",
                 "ext-mbstring": "*",
-                "illuminate/contracts": "5.0.*",
-                "php": ">=5.4.0"
+                "illuminate/contracts": "5.1.*",
+                "php": ">=5.5.9"
             },
             "suggest": {
-                "jeremeamia/superclosure": "Required to be able to serialize closures (~2.0)."
+                "jeremeamia/superclosure": "Required to be able to serialize closures (~2.0).",
+                "symfony/var-dumper": "Required to use the dd function (2.7.*)."
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.0-dev"
+                    "dev-master": "5.1-dev"
                 }
             },
             "autoload": {
@@ -391,7 +392,8 @@
                 }
             ],
             "description": "The Illuminate Support package.",
-            "time": "2015-02-03 22:40:35"
+            "homepage": "http://laravel.com",
+            "time": "2015-06-15 07:46:41"
         },
         {
             "name": "nesbot/carbon",
@@ -488,35 +490,6 @@
                 "response"
             ],
             "time": "2015-05-04 20:22:00"
-        },
-        {
-            "name": "robin/support",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "/Users/bwubs/Werk/Robin/Modules/Support",
-                "reference": "5bab1c2b583466c911fc910a2350d2c882698153"
-            },
-            "require": {
-                "guzzlehttp/guzzle": "~6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Robin\\Support\\": "src"
-                }
-            },
-            "license": [
-                "GPL v3"
-            ],
-            "authors": [
-                {
-                    "name": "Bram Wubs",
-                    "email": "bwubs@me.com"
-                }
-            ],
-            "description": "Contracts for the robin packages",
-            "time": "2015-06-30 12:27:04"
         },
         {
             "name": "symfony/translation",
@@ -1723,9 +1696,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "robin/support": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
