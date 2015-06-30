@@ -1,17 +1,10 @@
 {
   "name": "robin/api",
   "description": "PHP Wrapper for the robin api",
-  "repositories": [
-        {
-          "type": "vcs",
-          "url": "/Users/bwubs/Werk/Robin/Modules/Support"
-        }
-      ],
   "require": {
     "illuminate/support": "v5",
     "guzzlehttp/guzzle": "~6.0",
-    "nesbot/carbon": "1.19.0",
-    "robin/support": "dev-master"
+    "nesbot/carbon": "1.19.0"
   },
   "autoload": {
     "psr-4": {
