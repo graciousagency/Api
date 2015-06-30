@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d85edfb1a2bd06d6c4f93b3481f6eb8a",
+    "hash": "58507c4d8188d47d917e5a00a4d99ca7",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -490,6 +490,35 @@
                 "response"
             ],
             "time": "2015-05-04 20:22:00"
+        },
+        {
+            "name": "robin/support",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "/Users/bwubs/Werk/Robin/Modules/Support",
+                "reference": "f1f389a3da164239be9819a474bbdf20fdf1cb5a"
+            },
+            "require": {
+                "robin/api": "0.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Robin\\Support\\": "src"
+                }
+            },
+            "license": [
+                "GPL v3"
+            ],
+            "authors": [
+                {
+                    "name": "Bram Wubs",
+                    "email": "bwubs@me.com"
+                }
+            ],
+            "description": "Contracts for the robin packages",
+            "time": "2015-06-30 13:16:53"
         },
         {
             "name": "symfony/translation",

@@ -39,7 +39,7 @@ class Customer implements Jsonable, Arrayable
         $robinCustomer = new static();
 
         $robinCustomer->emailAddress = $email;
-        $robinCustomer->customerSince = $customerSince;
+        $robinCustomer->customerSince = static::formatDate($customerSince, '-');
         $robinCustomer->orderCount = $ordersCount;
         $robinCustomer->totalSpent = $totalSpent;
         $robinCustomer->panelView = $panelView;

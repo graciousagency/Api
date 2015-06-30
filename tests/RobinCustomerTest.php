@@ -17,6 +17,6 @@ class RobinCustomerTest extends TestCase
         $robinCustomer = Customer::make("bwubs@me.com", $since, 5, "€1150,-", $panel);
 
         $this->assertInstanceOf(Customer::class, $robinCustomer);
-
+        $this->assertEquals("2013-04-21", $robinCustomer->customerSince);
     }
 }
