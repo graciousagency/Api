@@ -7,11 +7,13 @@ namespace Robin\Api\Models\Views;
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
+use Robin\Api\Traits\DateFormatter;
 use Robin\Api\Traits\ModelFormatter;
 
 class ListView implements Jsonable, Arrayable
 {
     use ModelFormatter;
+    use DateFormatter;
 
     public $orderNumber;
 
@@ -30,7 +32,7 @@ class ListView implements Jsonable, Arrayable
         $list = new static();
 
         $list->orderNumber = $orderNumber;
-        $list->date = $date;
+        $list->date = static::formatDate($date);
         $list->status = $status;
 
         return $list;
