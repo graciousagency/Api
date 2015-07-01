@@ -3,7 +3,7 @@
 
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
-use Robin\Api\Client;
+use Robin\Api\Robin;
 
 class TestCase extends \PHPUnit_Framework_TestCase
 {
@@ -20,7 +20,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
         $secret = env('ROIBIN_API_SECRET');
         $url = env('ROBIN_API_URL');
 
-        return new Client($key, $secret, $url);
+        return new Robin($key, $secret, $url);
     }
 
     protected function setUp()

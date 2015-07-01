@@ -2,7 +2,7 @@
 
 use GuzzleHttp\Psr7\Response;
 use Robin\Api\Collections\Customers;
-use Robin\Api\Client;
+use Robin\Api\Robin;
 use Robin\Api\Collections\Orders;
 
 class RobinApiTest extends TestCase
@@ -15,7 +15,7 @@ class RobinApiTest extends TestCase
         $secret = env("ROIBIN_API_SECRET");
         $url = env("ROBIN_API_URL");
 
-        $api = new Client($key, $secret, $url);
+        $api = new Robin($key, $secret, $url);
 
         $customers = new Customers(
             [
@@ -76,7 +76,7 @@ class RobinApiTest extends TestCase
         $secret = env("ROIBIN_API_SECRET");
         $url = env("ROBIN_API_URL");
 
-        return new Client($key, $secret, $url);
+        return new Robin($key, $secret, $url);
 
     }
 }
