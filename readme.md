@@ -193,7 +193,7 @@ This works the same for `Invoices` and `Shipments` details.
 
 The ROBIN API allows you to send your own data towards it. The code blow shows you how to do this.
 
-``PHP
+```PHP
 <?php
 use Robin\Api\Models\Views\Details\Detail;
         
