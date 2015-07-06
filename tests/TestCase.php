@@ -56,11 +56,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
         $secret = env("ROIBIN_API_SECRET");
         $url = env("ROBIN_API_URL");
 
-        $monolog = new Logger("ROBIN");
-        $monolog->pushHandler(new StreamHandler(__DIR__ . '/logs/robin.log'));
-
-        $robinLogger = new RobinLogger($monolog);
-        return new Robin($key, $secret, $url, $robinLogger);
+        return new Robin($key, $secret, $url);
 
     }
 }

@@ -34,9 +34,8 @@ class Robin implements Sender
      * @param $key
      * @param $secret
      * @param $url
-     * @param RobinLogger $errorLogger
      */
-    public function __construct($key, $secret, $url, RobinLogger $errorLogger)
+    public function __construct($key, $secret, $url)
     {
         $this->key = $key;
         $this->secret = $secret;
@@ -44,7 +43,6 @@ class Robin implements Sender
 
         $client = new GuzzleClient(['base_uri' => $url, 'auth' => [$key, $secret]]);
         $this->setClient($client);
-        $this->errorLogger = $errorLogger;
     }
 
     public function orders(Orders $orders)
