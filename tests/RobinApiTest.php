@@ -1,7 +1,9 @@
 <?php
 
 use GuzzleHttp\Psr7\Response;
+use Monolog\Logger;
 use Robin\Api\Collections\Customers;
+use Robin\Api\Logger\RobinLogger;
 use Robin\Api\Robin;
 use Robin\Api\Collections\Orders;
 
@@ -11,11 +13,7 @@ class RobinApiTest extends TestCase
 
     public function testCanSendCustomer()
     {
-        $key = env("ROBIN_API_KEY");
-        $secret = env("ROIBIN_API_SECRET");
-        $url = env("ROBIN_API_URL");
-
-        $api = new Robin($key, $secret, $url);
+        $api = $this->getRealRobinClient();
 
         $customers = new Customers(
             [
@@ -70,13 +68,13 @@ class RobinApiTest extends TestCase
 
     }
 
-    private function getRealRobinClient()
+    /**
+     * @expectedException \Robin\Api\Exceptions\RobinSendFailedException
+     */
+    public function testThrowsExceptionWhenRequestFails()
     {
-        $key = env("ROBIN_API_KEY");
-        $secret = env("ROIBIN_API_SECRET");
-        $url = env("ROBIN_API_URL");
+        $api = $this->getRealRobinClient();
 
-        return new Robin($key, $secret, $url);
-
+        $api->customers(Customers::make(['this' => "should", 'trigger' => 'an', 'error']));
     }
 }

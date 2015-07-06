@@ -1,6 +1,6 @@
 {
   "name": "robin/api",
-  "description": "PHP Wrapper for the robin api",
+  "description": "PHP wrapper for the ROBIN API",
   "repositories": [
     {
       "type": "vcs",
@@ -11,7 +11,8 @@
     "illuminate/support": "v5.1.2",
     "guzzlehttp/guzzle": "~6.0",
     "nesbot/carbon": "1.19.0",
-    "robin/support": "~0.1"
+    "robin/support": "~0.1",
+    "monolog/monolog": "^1.14"
   },
   "autoload": {
     "psr-4": {

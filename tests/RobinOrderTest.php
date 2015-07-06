@@ -22,7 +22,7 @@ class RobinOrderTest extends TestCase
     {
         $robinOrder = $this->getRobinOrder();
 
-        $this->assertEquals("2015/06/25", $robinOrder->orderByDate);
+        $this->assertEquals("2013/04/21", $robinOrder->orderByDate);
         $this->assertEquals(
             "https://seoshop.webshopapp.com/backoffice/sales-orders/edit?id=7846544",
             $robinOrder->url
@@ -110,9 +110,7 @@ class RobinOrderTest extends TestCase
      */
     private function getRobinOrder()
     {
-
-
-        $createdAt = Carbon::now(new DateTimeZone("Europe/Amsterdam"))->subDays(5);
+        $createdAt = Carbon::createFromFormat("Y-m-d", "2013-04-21", new DateTimeZone("Europe/Amsterdam"));
         $listView = ListView::make("ORD123", $createdAt, "Shipped");
 
         $detailsView = new DetailsView();
