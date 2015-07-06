@@ -8,11 +8,8 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Robin\Api\Traits\ModelFormatter;
 
-class Shipment implements Jsonable, Arrayable
+class Shipment extends Detail
 {
-
-    use ModelFormatter;
-
     public $shipment;
 
     public $status;

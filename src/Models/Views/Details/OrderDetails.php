@@ -8,10 +8,8 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Robin\Api\Traits\ModelFormatter;
 
-class OrderDetails implements Arrayable, Jsonable
+class OrderDetails extends Detail
 {
-
-    use ModelFormatter;
 
     public $date;
 

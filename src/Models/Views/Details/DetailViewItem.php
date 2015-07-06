@@ -9,9 +9,8 @@ use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Collection;
 use Robin\Api\Traits\ModelFormatter;
 
-class DetailViewItem implements Arrayable, Jsonable
+class DetailViewItem extends Detail
 {
-    use ModelFormatter;
 
     public $displayAs;
 

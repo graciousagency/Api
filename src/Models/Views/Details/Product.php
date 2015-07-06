@@ -4,9 +4,7 @@
 namespace Robin\Api\Models\Views\Details;
 
 
-use Robin\Connect\SEOShop\Models\OrderProduct;
-
-class Product
+class Product extends Detail
 {
 
     public $product;
@@ -26,11 +24,5 @@ class Product
         $product->price = (string)$price;
 
         return $product;
-    }
-
-    public static function fromSeoShop(OrderProduct $product)
-    {
-//        dump($product);
-        return static::make($product->productTitle, $product->quantityOrdered, $product->priceIncl);
     }
 }

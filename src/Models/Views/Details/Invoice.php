@@ -4,7 +4,7 @@
 namespace Robin\Api\Models\Views\Details;
 
 
-class Invoice
+class Invoice extends Detail
 {
 
     public $shipment;

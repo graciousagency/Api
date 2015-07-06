@@ -24,10 +24,6 @@ class Robin implements Sender
      * @var GuzzleClient
      */
     private $client;
-    /**
-     * @var RobinLogger
-     */
-    private $errorLogger;
 
     /**
      *
@@ -45,11 +41,21 @@ class Robin implements Sender
         $this->setClient($client);
     }
 
+    /**
+     * @param Orders $orders
+     * @return \Psr\Http\Message\ResponseInterface
+     * @throws RobinSendFailedException
+     */
     public function orders(Orders $orders)
     {
         return $this->post('orders', $orders);
     }
 
+    /**
+     * @param Customers $customers
+     * @return \Psr\Http\Message\ResponseInterface
+     * @throws RobinSendFailedException
+     */
     public function customers(Customers $customers)
     {
 
@@ -57,6 +63,12 @@ class Robin implements Sender
 
     }
 
+    /**
+     * @param $endPoint
+     * @param Collection $data
+     * @return \Psr\Http\Message\ResponseInterface
+     * @throws RobinSendFailedException
+     */
     private function post($endPoint, Collection $data)
     {
         try {
@@ -69,6 +81,9 @@ class Robin implements Sender
 
     }
 
+    /**
+     * @param ClientInterface $client
+     */
     public function setClient(ClientInterface $client)
     {
         $this->client = $client;
