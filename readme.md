@@ -166,7 +166,7 @@ When you convert a `detailViewItem` to Json or an Array, they get formatted like
     "date":"16-05-2015",
     "status":"processing",
     "payment_status":"paid",
-    "shipment_status:"shipped"
+    "shipment_status":"shipped"
   }
 }
 ```
