@@ -53,7 +53,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
     protected function getRealRobinClient()
     {
         $key = env("ROBIN_API_KEY");
-        $secret = env("ROIBIN_API_SECRET");
+        $secret = env("ROBIN_API_SECRET");
         $url = env("ROBIN_API_URL");
 
         return new Robin($key, $secret, $url);

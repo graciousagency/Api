@@ -26,6 +26,16 @@ class RobinLogger
         $logger->pushProcessor(new IntrospectionProcessor());
     }
 
+    public function hooksError($payload, $request)
+    {
+        $this->logger->addCritical("Error while receiving a web-hook.", compact("payload", "request"));
+    }
+
+    public function hooksInfo($payload, $request)
+    {
+        $this->logger->addInfo("Processing incoming web-hook: ", compact("payload", "request"));
+    }
+
     /**
      * @param Customer|Order $model
      * @param $reason
