@@ -23,7 +23,6 @@ class RobinLogger
     public function __construct(Logger $logger)
     {
         $this->logger = $logger;
-        $logger->pushProcessor(new IntrospectionProcessor());
     }
 
     public function hooksError($payload, $request)
