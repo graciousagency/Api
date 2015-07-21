@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "504003532f9d5f99c106b2f14a189359",
+    "hash": "d751e3c0db5368cfe67ec4e4ffe08fbc",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -607,16 +607,16 @@
         },
         {
             "name": "robinhq/support",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ROBINHQ-COM/Support.git",
-                "reference": "519700fecb40c979bb1b7187126263e712ee75b3"
+                "reference": "3b0d91b53f3b588abff86f2792cc5e8f09df1514"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ROBINHQ-COM/Support/zipball/519700fecb40c979bb1b7187126263e712ee75b3",
-                "reference": "519700fecb40c979bb1b7187126263e712ee75b3",
+                "url": "https://api.github.com/repos/ROBINHQ-COM/Support/zipball/3b0d91b53f3b588abff86f2792cc5e8f09df1514",
+                "reference": "3b0d91b53f3b588abff86f2792cc5e8f09df1514",
                 "shasum": ""
             },
             "type": "library",
@@ -627,7 +627,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL v3"
+                "GPL-3.0"
             ],
             "authors": [
                 {
@@ -636,7 +636,7 @@
                 }
             ],
             "description": "Support library for the ROBIN API packages",
-            "time": "2015-07-17 14:04:18"
+            "time": "2015-07-17 14:13:45"
         },
         {
             "name": "symfony/translation",
