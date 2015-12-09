@@ -1,5 +1,5 @@
 {
-  "name": "robinhq/api",
+  "name": "graciousstudios/api",
   "description": "PHP wrapper for the ROBIN API",
   "require": {
     "illuminate/support": "v5.1.*",
@@ -25,8 +25,8 @@
   "license": "GPL-3.0",
   "authors": [
     {
-      "name": "Bram Wubs",
-      "email": "bwubs@me.com"
+      "name": "Pepijn Blom",
+      "email": "pepijn@graciousstudios.nl"
     }
   ],
   "minimum-stability": "stable"
