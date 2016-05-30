@@ -13,15 +13,19 @@ class Product extends Detail
 
     public $price;
 
-    public static function make($name, $quantity, $price)
+//    public $variantTitle;
+
+    public static function make($name, $quantity, $price, $variantTitle)
     {
         $product = new static;
 
-        $product->product = $name;
+        $product->product = $name.' ('.$variantTitle.')';
 
         $product->quantity = (string)$quantity;
 
         $product->price = (string)$price;
+
+//        $product->variantTitle = $variantTitle;
 
         return $product;
     }

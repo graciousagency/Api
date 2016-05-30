@@ -11,17 +11,20 @@ class Panel implements Jsonable, Arrayable
 {
     use ViewFormatter;
 
-    public $orders;
+//    public $orders;
 
     public $totalSpent;
 
-    public static function make($orders, $totalSpend)
+    public $billingCountry;
+
+    public static function make($orders, $totalSpent, $billingCountry)
     {
         $panel = new static;
 
-        $panel->orders = (string)$orders;
+//        $panel->orders = (string)$orders;
 
-        $panel->totalSpent = $totalSpend;
+        $panel->totalSpent = $totalSpent;
+        $panel->billingCountry = $billingCountry;
 
         return $panel;
     }

@@ -24,17 +24,24 @@ class Customer implements Jsonable, Arrayable
 
     public $totalSpent;
 
+    public $name;
+
     public $panelView;
+
+    public $phoneNumber;
 
     /**
      * @param string $email
      * @param Carbon $customerSince
      * @param int $ordersCount
      * @param string $totalSpend
+     * @param string $name
+     * @param string $phoneNumber
      * @param Panel $panelView
+     * @param string $addressBillingCountry
      * @return Customer
      */
-    public static function make($email, Carbon $customerSince, $ordersCount, $totalSpend, Panel $panelView)
+    public static function make($email, Carbon $customerSince, $ordersCount, $totalSpend, $name, $phoneNumber, Panel $panelView)
     {
         $robinCustomer = new static();
 
@@ -42,7 +49,10 @@ class Customer implements Jsonable, Arrayable
         $robinCustomer->customerSince = static::formatDate($customerSince, '-');
         $robinCustomer->orderCount = $ordersCount;
         $robinCustomer->totalSpent = $totalSpend;
+        $robinCustomer->name = $name;
+        $robinCustomer->phoneNumber = $phoneNumber;
         $robinCustomer->panelView = $panelView;
+
         return $robinCustomer;
     }
 }

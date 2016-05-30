@@ -21,7 +21,17 @@ class OrderDetails extends Detail
 
     public $shipmentStatus;
 
-    public static function make($date, $status, $paymentStatus, $shipmentStatus)
+    public $paymentId;
+
+    public $discountAmount;
+
+    public $discountPercentage;
+
+    public $discountType;
+
+    public $discountCouponCode;
+
+    public static function make($date, $status, $paymentStatus, $shipmentStatus, $paymentID, $discountType, $discountPercentage, $discountAmount, $discountCouponCode)
     {
         $details = new static;
 
@@ -29,6 +39,11 @@ class OrderDetails extends Detail
         $details->status = $status;
         $details->paymentStatus = $paymentStatus;
         $details->shipmentStatus = $shipmentStatus;
+        $details->paymentId = $paymentID;
+        $details->discountAmount = $discountAmount;
+        $details->discountPercentage = $discountPercentage;
+        $details->discountType = $discountType;
+        $details->discountCouponCode = $discountCouponCode;
 
         return $details;
     }

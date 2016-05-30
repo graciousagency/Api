@@ -45,24 +45,14 @@ class Order implements Jsonable, Arrayable
      */
     public $detailsView;
 
-    public static function make(
-        $number,
-        $email,
-        Carbon $createdAt,
-        $price,
-        $editUrl,
-        ListView $listView,
-        DetailsView $detailsView
-    ) {
+    public static function make($number, $email, Carbon $createdAt, $price, $editUrl, ListView $listView, DetailsView $detailsView) {
         $order = new static();
         $order->orderNumber = $number;
         $order->emailAddress = $email;
         $order->orderByDate = static::formatDate($createdAt, "/");
         $order->revenue = (string)$price;
         $order->url = $editUrl;
-
         $order->listView = $listView;
-
         $order->detailsView = $detailsView;
 
         return $order;
