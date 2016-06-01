@@ -72,7 +72,7 @@ class Robin implements Sender
     private function post($endPoint, Collection $data)
     {
         try {
-            return $this->client->post($endPoint, ['json' => $data->toJson()]);
+            return $this->client->post($endPoint, ['json' => $data->toArray()]);
         } catch (ClientException $exception) {
             $sendFailedException = new RobinSendFailedException();
             $sendFailedException->setResponse($exception->getResponse());
